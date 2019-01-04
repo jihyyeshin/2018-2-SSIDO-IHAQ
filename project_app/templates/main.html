@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="/static/semantic/semantic.css">
+	<title>iHAQ | main page</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="/static/semantic/semantic.js"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<style type="text/css">
+		.top{
+			width: 100%;
+			height: 5vw;
+			position: fixed; 
+			top: 0;
+			z-index: 9998;
+		}
+		.top_login_div{
+			width: 20vw;
+			height: 80%;
+			position: right;
+			margin-top: 0.5%;
+			float: right;
+		}
+		.top_login_member_div{
+			width: 50vw;
+			height: 80%;
+			position: right;
+			margin-top: 0.5%;
+			float: right;
+		}		
+		.mid{
+			width: 20vw;
+			height: 20vw;
+		}
+		.mid_title{
+			width: 50%;
+			height: 39%;
+			position: fixed;
+			margin-top: 10vw;
+			margin-left: 25%;
+			color: white;
+			font-size: 9vw;
+			background-repeat: no-repeat;
+		}
+		.mid_explain{
+			width: 50%;
+			height: 40%;
+			position: fixed;
+			margin-left: 25%;
+			margin-top: -5%;
+			line-height: 2em;
+			text-align: center;
+			top: 30vw;
+			color: white;
+			font-size: 1.5vw;
+		}
+		.join_input{
+			width: 30vw;
+			height: 3vw;
+			position: fixed;
+			opacity: 0.7;
+			float: right;
+			margin-top: 13%;
+			margin-right: 35%;
+			padding-left: 2vw;
+			border: 2vw; 
+			border-radius: 2vw;
+			right: 0.6vw;
+			background-color: white;
+		}
+		.join_button{
+			width: 5vw; 
+			height: 2vw; 
+			float: left;
+			font-size: 1.2vw;
+			margin-top: 7.3%;
+			margin-right: 25%;
+			cursor: pointer;
+			background-color: transparent;
+			border: none;
+			position: fixed;
+			top: 26.4vw;
+			right: 10.5vw;
+		}
+		.register_button, .login_button, .logout_button, .mypage_button{
+		    border: none;
+		    background-color: transparent;
+		    color: white;
+		    padding: 20px 5px 20px 5px;
+		    text-align: center;
+		    text-decoration: none;
+		    display: inline-block;
+		    font-size: 20px;
+		    margin: 4px 2px;
+		    cursor: pointer;
+		    outline: 0;
+		}
+		.logout_button{
+			width: 10vw;
+			height: 1vw;
+			background-color: transparent;
+		    padding: 0vw 1vw 0.2vw 1vw;
+		    margin: 1vw 1vw; 
+			float: right;
+			position: fixed;
+			right: 13vw;
+		}
+		.mypage_button{
+			width: 14vw;
+			height: 1vw;
+			background-color: transparent;
+		    padding: 0vw 1vw 0.2vw 1vw;
+		    margin: 1vw 1vw; 
+			float: right;
+			position: fixed;
+			right: 2vw;
+		}
+		.top_hello_div{
+			border: none;
+		    background-color: transparent;
+		    color: white;
+		    padding: 0vw 1vw 0.2vw 1vw;
+		    text-align: center;
+		    text-decoration: none;
+		    display: inline-block;
+		    font-size: 1.5vw;
+		    margin: 1vw 1vw; 
+		    outline: 0;
+		    width: 20vw; 
+		    height: 1vw; 
+		    float: right;
+		    position: fixed;
+			right: 20vw;
+		}
+		.create_new_class{
+			position: fixed;
+			top: 30vw;
+			right: 10.5vw;
+			background-color: transparent;
+			margin-top: -28.3%;
+			margin-right: 75%;
+			font-size: 1.4em;
+		}
+		.create_new_class_button{
+			background-color: transparent;
+			border: none;
+			color: white;
+			cursor: pointer;
+		}
+		.button{
+			border: 0;
+			outline: 0;
+		}
+		.vanish{
+			float:right; 
+			border:0px; 
+			margin-right: 10px;
+			cursor: pointer;
+		}
+		#overlay{
+			display: none;
+			z-index: 1000;
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			background-color: rgba(0,0,0,0.5);
+			cursor: pointer;
+		}
+		input{
+			all: unset;
+		}
+		#login_div{
+			width: 25%;
+			height: 80%;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			box-shadow: 0px -1px 30px 2px #999;
+			border-radius: 8px;
+			z-index: 9999;
+			background-color: white;
+		}
+		#class_div{
+			width: 25%;
+			height: 60%;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			box-shadow: 0px -1px 30px 2px #999;
+			border-radius: 8px;
+			z-index: 9999;
+			background-color: white;
+		}
+		#join_div{
+			width:350px;
+			height:470px;
+			position:absolute;
+			top: 25vw;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			box-shadow:0px -1px 30px 2px #999;
+			border-radius:8px;
+			z-index: 9999;
+			background-color: white;
+		}
+		#login_header, #join_header{
+			width:100%;
+			height:20%;
+			text-align:center;
+			padding:5vw 1vw 1vw 1vw;
+			font-size:1.5em;
+		}
+		#class_header{
+			width:100%;
+			height:10%;
+			text-align:center;
+			padding:3vw 1vw 1vw 1vw;
+			font-size:1.5em;
+		}
+		#login_section1{
+			width:100%;
+			height:30%;
+		}
+		#join_section1{
+			width: 100%;
+			height: 60%;
+		}
+		#class_section1{
+			width: 100%;
+			height: 50%;
+		}
+		#login_section2{
+			width:100%;
+			height:20%;
+		}
+		#class_section2{
+			width: 100%;
+			height: 10%;
+		}
+		#join_section2{
+			width:350px;
+			height:80px;
+			bottom: 2vw;
+		}
+		#login_footer, #class_footer, #join_footer{
+			width:100%;
+			height:10%;
+			padding-top: 2vw;
+			text-align: center;
+		}
+		#class_footer{
+			width:350px;
+			height:80px;
+			text-align:center;
+			font-size: 1.2em;
+		}
+		#class_name_section, #class_code_section, #class_image_section, #class_button_section{
+			width:280px;
+			height:60px;
+		}
+		#btn{
+			height:38px;
+		}
+		#id_class_id{
+			width:225px;
+		}
+		#btn1{
+			width:100%;
+			font-weight: bold;
+			border-radius:5px;
+		}
+		span{
+			border-bottom:2px solid gray;
+			width:100px;
+			height:80px;
+			padding:0 0 5px 0;
+		}
+		A:link{text-decoration:none; color:black} /* 링크 상태일 때 스타일 */
+		A:visited{text-decoration:none; color:gray} /* 방문했을 때 스타일 */
+		A:hover{text-decoration:underline; color:blue} /* 마우스 오버시 스타일 */
+		A:active{text-decoration:none; color:red} /* 마우스를 누른 상태일 때 스타일 */
+		input{
+			border:0px;
+		}
+		#id{
+			width:200px;
+		}
+		#pwd, #className, #classCode{
+			width:185px;
+		}
+		.main_text{
+			width: 50%;
+			float: left;
+			padding-top: 15%;
+			font-size: 90%;
+		}
+
+		.main_text p{
+				text-align: left;
+				font-weight:bold;
+				font-size:150%;
+				width: 60%;
+				margin: 0 auto;
+		}
+		.main_video{
+				width: 60%;
+				margin: 0 auto;
+		}
+	</style>
+
+	<script type="text/javascript">
+		function join_class(){
+			var class_id = $("#class_id").val();
+
+			$.ajax({
+	          url: '/check_class/',
+	          data: {
+	          	  'class_id' : class_id,
+	          },
+	          dataType: 'json',
+	          success: function (data) {
+	          	//alert(data.result);
+	          	if(data.result == 'success'){
+	          		var addr = '../joinClass/' + class_id;
+	          		window.location.href = addr;
+	          	}
+	          	else {
+	          		alert("존재하지 않는 클래스코드 입니다.");
+	          	}
+	          }
+	        });
+		}
+
+		function login(){
+			var id = $("#id").val();
+			var psw = $("#pwd").val();
+
+			$.ajax({
+	          url: '/check_login/',
+	          data: {
+	          	  'id' : id,
+	          	  'psw' : psw,
+	          },
+	          dataType: 'json',
+	          success: function (data) {
+	          	//alert(data.result);
+	          	if(data.result == 'success'){
+	          		window.location.href = '../login/';
+	          	}
+	          	else if(data.result == 'id_failed'){
+	          		alert("존재하지 않는 ID 입니다.");
+	          	}
+	          	else if(data.result == 'psw_failed'){
+	          		alert("비밀번호가 틀렸습니다.");
+	          	}
+	          }
+	        });
+		}
+
+		function showPassword() {
+		    var x = document.getElementById("user_re_psw");
+			    if (x.type === "password") {
+			        x.type = "text";
+			    } else {
+			        x.type = "password";
+			    }
+		}
+
+		var id_validation = 'false';
+		var psw_validation = 'false';
+
+		function check_psw(){
+			var psw = $("#user_psw").val();
+			var re_psw = $("#user_re_psw").val();
+
+			if(psw == re_psw){
+				$("#psw_check_result").html("비밀번호가 일치합니다.");
+				$("#psw_check_result").css({
+					'color' : 'green',
+				});
+				psw_validation = 'true';
+			}
+			else{
+				$("#psw_check_result").html("Not correct");
+				$("#psw_check_result").css({
+					'color': 'red',
+				});
+				psw_validation = 'false';
+			}
+		}
+
+		function check_id(){
+			var user_id = $("#user_id").val();
+
+			$.ajax({
+				
+				url : '/check_id/',
+				data : {
+					'user_id' : user_id
+				},
+				dataType: 'json',
+			
+				success: function (response_result){
+					//alert(response_result.result);
+					
+					if(response_result.result == 'true'){
+						alert("사용중인 아이디입니다.");
+						$("#id_check_result").html("중복");
+						$("#id_check_result").css({
+							'color' : 'red',
+						});
+						id_validation = 'false';
+					}
+					else if(response_result.result == 'false'){
+						alert("사용가능한 아이디입니다.");
+						$("#id_check_result").html("사용가능");
+						$("#id_check_result").css({
+							'color' : 'green',
+						});
+						id_validation = 'true';
+					}
+					
+				}
+			});
+		}
+
+		function check_submit(){
+			var p_val=/^.*(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=*]).*$/;
+			var e_val = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+
+			var id=document.frm.user_id.value;
+			var name=document.frm.user_name.value;
+			var psw=document.frm.user_psw.value;
+			var email=document.frm.user_email.value;
+			var check ='false';
+
+			if (name==""){
+				alert("이름을 입력해주세요.");
+			}
+			else if (id==""){
+				alert("아이디를 입력해주세요.");
+			}
+			else if (psw==""){
+				alert("비밀번호를 입력해주세요.");
+			}
+			else if (email==""){
+				alert("이메일을 입력해주세요.");
+			}
+			else if(id.length<4||id.length>12){
+				alert("아이디는 4자 이상 12자 이하입니다.");
+			}
+			else if(!p_val.test(psw) || psw.length<6){
+				alert("비밀번호는 영문, 숫자, 특수문자 조합 6자이상입니다.");
+			}
+			else if(!e_val.test(email))
+			{
+				alert("이메일 형식이 맞지 않습니다.");
+			}
+			else if(id_validation == 'false' && psw_validation == 'true'){
+				alert("아이디를 확인해주세요.");
+			}
+			else if(id_validation == 'true' && psw_validation == 'false'){
+				alert("비밀번호를 확인해주세요.");
+			}
+			else if (id_validation == 'false' && psw_validation == 'false'){
+				alert("아이디, 비밀번호를 확인해주세요");
+				}
+			else {
+				check ='true';
+			}
+
+			if(check=='true'){
+				var form = document.frm;
+				form.action = "../main/";
+				form.submit();
+			}
+		}
+
+		// function allocate() {
+		// 	var id = "";
+		// 	for(var i = 0; i < 8; i++) {
+		// 		var ran = randomRange(1, 2);
+		// 		switch(ran) {
+		// 		case 1: id += randomRange(0, 9); break;
+		// 		case 2: id += String.fromCharCode(randomRange(65,90)); break;
+		// 		}
+		// 	}
+		// 	document.getElementById("id_class_id").value = id;
+		// }
+
+		// function randomRange(n1, n2) {
+		// 	 return Math.floor((Math.random() * (n2 - n1 + 1)) + n1);
+		// }
+
+		// function class_submit(){
+		// 	var image = $("#image").val();
+		// 	var id_class_name = $("#id_class_name").val();
+		// 	var id_class_id = $("#id_class_id").val();
+
+		// 	$.ajax({
+		// 		url: '/check_class/'
+		// 		data: {
+		// 			'image' : image,
+		// 			'id_class_name' : id_class_name,
+		// 			'id_class_id' : id_class_id,
+		// 		},
+		// 		dataType : 'json',
+		// 		success: function(data){
+		// 			if(data.result == 'success'){
+		// 				window.location.href = '../main/';
+		// 			}
+		// 		}
+		// 	});
+		// }
+
+		function login_enter(f){
+			if (f.keyCode == 13){
+				return login();
+			}
+		}
+
+		function join_enter(f){
+			if (f.keyCode == 13){
+				return check_submit();
+			}
+		}
+		
+	</script>
+
+	<script type="text/javascript">
+		//아이디, 비밀번호 입력 여부 체크
+		function loginCheck() {
+			if(document.f1.id.value == "") {
+				alert("아이디를 입력해주세요!");
+			}
+			else if(document.f1.pwd.value == "") {
+				alert("비밀번호를 입력해주세요!");
+			}
+			else {
+				document.f1.submit();
+			}
+		}
+		//클래스 이름, 클래스 코드 입력 여부 체크
+		function classCheck() {
+			if(document.f2.className.value == "") {
+				alert("클래스 이름을 입력해주세요!");
+			}
+			else if(document.f2.classCode.value == "") {
+				alert("클래스 코드를 입력해주세요!");
+			}
+			else {
+				document.f2.submit();
+			}
+		}
+
+		//로그인 버튼 누르면 창이 활성화
+		function loginShow() {
+			$("#login_div").css("display","block");
+			$("#join_div").css("display", "none");
+			$("#class_div").css("display", "none");
+			document.getElementById("overlay").style.display = "block";
+		}
+		//x버튼 누르면 창 사라짐
+		function loginVanish() {
+			$("#login_div").css("display", "none");
+			document.getElementById("overlay").style.display="none";
+		}
+		//회원가입 버튼 누르면 창이 활성화
+		function joinShow() {
+			window.location.href = '../#1';
+			$("#join_div").css("display","block");
+			$("#login_div").css("display", "none");
+			$("#class_div").css("display", "none");
+			document.getElementById("overlay").style.display = "block";
+		}
+		//x버튼 누르면 창 사라짐
+		function joinVanish() {
+			$("#join_div").css("display", "none");
+			document.getElementById("overlay").style.display="none";
+		}
+		function findpwShow(){
+			$("#login_div").css("display","block");
+			$("#join_div").css("display", "none");
+			$("#class_div").css("display", "none");
+			document.getElementById("overlay").style.display = "block";
+		}
+		function classShow(){
+			$("#class_div").css("display","block");
+			$("#join_div").css("display", "none");
+			$("#login_div").css("display", "none");
+			document.getElementById("overlay").style.display = "block";
+		}
+		function classVanish(){
+			$("#class_div").css("display","none");
+			document.getElementById("overlay").style.display="none";
+		}
+		function off(){
+			document.getElementById("overlay").style.display="none";
+		}
+		function go_classpage(){
+			window.location.href = "../upload";
+		}
+		function go_mypage(){
+			window.location.href = "../mypage";
+		}
+
+		function submit_class(){
+			var form = document.f3;
+			form.submit();
+		}
+		//할당 버튼을 누르면 클래스 고유 번호 임의로 할당
+		function allocate() {
+			var id = "";
+			for(var i = 0; i < 8; i++) {
+				var ran = randomRange(1, 2);
+				switch(ran) {
+				case 1: id += randomRange(0, 9); break;
+				case 2: id += String.fromCharCode(randomRange(65,90)); break;
+				}
+			}
+			document.getElementById("id_class_id").value = id;
+		}
+
+		//랜덤 번호 생성
+		function randomRange(n1, n2) {
+			 return Math.floor((Math.random() * (n2 - n1 + 1)) + n1);
+		}
+
+		function create_class(){
+			var form = document.f3;
+			if(check_class_id_flag == true){
+				form.action = "../upload/";
+				form.submit();
+			}
+			else{
+				alert("클래스 코드를 확인해주세요.");
+			}
+		}
+
+		var check_class_id_flag = false;
+
+		$(document).ready(function(){
+	      	$('#id_class_id').on('input',function(e){
+				//alert('Changed!')
+				var class_id = $("#id_class_id").val();
+				//console.log(text);
+				$.ajax({
+					url: '/check_class_id/',
+					data: {
+						'class_id' : class_id,
+					},
+					dataType: 'json',
+					success: function (data) {
+						//console.log(class_id);
+						if(data.result == 'success'){
+							$("#class_check_text").html("사용 가능한 클래스코드 입니다.");
+							$("#class_check_text").css("color", "green");
+							check_class_id_flag = true;
+						}
+						else{
+							$("#class_check_text").html("이미 사용중인 클래스코드 입니다.");
+							$("#class_check_text").css("color", "red");
+							check_class_id_flag = false;
+						}
+					}
+				});
+			});
+	    });
+
+	</script>
+
+
+</head>
+
+<body>
+	<div id="fullpage">
+		<div class="section" style="width: 100%; height: 5vw; margin: 0; background-image: url('../../static/img/main_image_new2.png'); background-size: 100%; background-repeat: no-repeat; background-color: white;">
+			<div class="top">
+			{% if member.user_id == 'unknown' %}
+				<div class="top_login_div">
+					<button class="login_button" id="login_button" style="width: 8vw; height: 110%;" onclick="loginShow();"> 로그인 </button>
+					<button class="register_button" style="width: 8vw; height: 110%;" onclick="joinShow();"> 회원가입 </button>
+				</div>
+			{% else %}
+				<div class="top_login_member_div" style="margin-right: 1px;">
+					<div class="top_hello_div">
+						{{member.user_name}}님 안녕하세요!
+					</div>
+					<button class="logout_button" onclick="location.href = '/logout/';"> 로그아웃 </button>
+					<button class="mypage_button" onclick="go_mypage();"> 마이페이지 </button>
+				</div>
+				<div class="create_new_class">
+					<button class="create_new_class_button" onclick="classShow();"> 새 클래스 생성 </button> 
+				</div>
+			{% endif %}
+		</div>
+
+		<div class="mid">
+			<div class="mid_title" style="background-image: url('../../static/img/logo_main.png'); background-size: 100%;"></div>
+			<div class="mid_explain">
+				iHAQ은 당신의 프레젠테이션을 더 원활하게 만들어줍니다. <br>
+				새로워진 소통형 프레젠테이션을 경험해보세요.
+			</div>
+		</div>
+
+		<div id="overlay" onclick="off()"></div>
+
+		<div class="join_input">
+			<input id="class_id" type="text" placeholder="클래스 코드 입력" style="height: 100%; font-size: 3vh;">
+			<button class="join_button" type="button" onclick="join_class();">검색</button>
+		</div>
+
+		<div id="login_div" style="display:none;">
+			<input type="button" value="x" class="vanish" onclick="loginVanish();"/>
+			<div id="login_header">
+				<b>로그인</b>
+			</div>
+			<div id="login_section1">
+				<form action="" method="post" name="f1" style="width: 100%; height: 60%">
+					<div class="id_input" style="width: 100%; padding-left: 10%; padding-top: 12%;">
+						<input class="border-bottom" type="text" name="id" id="id" maxlength="12" placeholder=" 아이디" style="width: 90%;" onkeypress="login_enter(this.form)">
+					</div>
+					<div class="pw_input" style="width: 100%; padding-left: 10%; padding-top: 12%;">
+						<input class="border-bottom" type="password" name="pwd" id="pwd" maxlength="12" placeholder=" 비밀번호" style="width: 90%" onkeypress="login_enter(this.form)">
+					</div>
+				</form>	
+			</div>
+			<div id="login_section2">
+					<button class="btn btn-default" style="width:80%; margin-left: 10%; margin-top: 5%;" onclick="login();">로그인</button>
+					<button class="btn btn-default" style="width:80%; margin-left: 10%; margin-top: 5%; background-color: darkgrey;" onclick="joinShow();">회원가입</button>
+			</div>
+			<div id="login_footer">
+				<a href="../../password-change/" style="color:grey;">비밀번호를 잊어버리셨나요?</a>
+			</div>
+		</div>
+
+		<div id="join_div" style="display: none;">
+			<input type="button" value="x" class="vanish" onclick="joinVanish();"/>
+			<div id="join_header">
+				<b>회원가입</b>
+			</div>
+			<div id="join_section1">
+				<form method="post" name="frm">
+					{% csrf_token %}
+					<div id="user_name_section" style="width: 100%; padding-left: 10%; padding-top: 7%;">
+						<input class="border-bottom" type="text" id="user_name" name="user_name" placeholder="이름" autofocus style="width: 90%" onkeypress="join_enter(this.form)">
+					</div>
+					<div id="user_id_section" style="width: 100%; padding-left: 10%; padding-top: 7%;">
+						<input class="border-bottom" type="text" id ="user_id" name="user_id" placeholder="아이디 (4~12자)" onchange="check_id_validation();" style="width: 65%" onkeypress="join_enter(this.form)">
+						<button type="button" class="btn btn-default" onclick="check_id();" style="width: 25%; height:30%; font-size: 1.8vh;">중복확인</button>
+						<div id="id_check_result"></div>
+					</div>
+					<div id="user_psw_section" style="width: 100%; padding-left: 10%; padding-top: 7%;">
+						<input class="border-bottom" type="password" id = "user_psw" name = "user_psw" placeholder="비밀번호(영문, 숫자, 특수문자 조합 6자 이상)" onchange="check_psw_validation();" style="width: 90%;" onkeypress="join_enter(this.form)">
+					</div>
+					<div id="user_re_psw_section" style="width: 100%; padding-left: 10%; padding-top: 7%;">
+						<input class="border-bottom" type="password" id = "user_re_psw" name = "user_re_psw" placeholder="비밀번호 확인" onchange="check_psw();" style="width: 90%;" onkeypress="join_enter(this.form)">
+					<div id="psw_check_result"></div>
+					</div>
+					<div id="user_email_section" style="width: 100%; padding-left: 10%; padding-top: 7%;">
+						<input class="border-bottom" type="text" id="user_email" name="user_email" placeholder="E-mail" style="width: 90%;" onkeypress="join_enter(this.form)">
+					</div>
+				</form>
+				<button type="submit" class="btn btn-default" style="width:80%; margin-left: 10%; margin-top: 10%; background-color: darkgrey;" onclick="check_submit();">회원가입</button>
+			</div>
+		</div>
+
+		<div id="class_div" style="display: none;">
+			<input type="button" value="x" class="vanish" onclick="classVanish();"/>
+			<div id="class_header">
+				<b>클래스 개설</b>
+			</div>
+			<div id="class_section1">
+				<form action="../upload/" name="f3" method="post" enctype="multipart/form-data" style="width: 100%; height: 60%;"> 
+					{% csrf_token %}
+					<div id="class_image_section" style="width: 100%; padding-left: 10%; padding-top: 15%;">
+							<input class="border-bottom" type="file" name="image" accept="image/*" id="id_image" style="width: 90%;">
+					</div>
+					<div id="class_name_section" style="width: 100%; padding-left: 10%; padding-top: 15%;">
+							<input class="border-bottom" type="text" name="class_name" maxlength="10" required id="id_class_name" style="width: 90%;" placeholder="클래스 이름">
+					</div>
+					<div id="class_code_section" style="width: 100%; padding-left: 10%; padding-top: 12%;">
+							<input class="border-bottom" type="text" name="class_id" maxlength="10" required id="id_class_id" style="width: 75%;"placeholder="클래스 코드">
+						<button type="button" class="btn btn-default" id="btn" onclick="allocate();"> 할당 </button>
+						<br>
+						<div id="class_check_text" style="width: 100%; height: 40px;"></div>
+					</div>
+				</form>
+			</div>
+			<div id="class_section2">
+					<div id="class_button_section" style="width: 100%;">
+						<button class="btn btn-default" id="btn1" type="button" style="width: 76%; margin-left: 12%; margin-top: 12%; background-color: darkgrey;" onclick="create_class();"> 클래스 생성 </button>
+					</div>
+					<input type="hidden" name="founder_id" maxlength="10" required id="id_founder_id" value="{{ myself.get.user_id }}">
+					<input type="hidden" name="founder_name" maxlength="10" required id="id_founder_name" value="{{ myself.get.user_name }}">
+			</div>
+	<!-- 		<div id="class_footer">
+				<a href="#">사용방법이 궁금하신가요?</a>
+			</div> -->
+
+		</div>
+	</div>
+	
+	<div class="section">
+	       <div class="main_text">
+	          <p style="font-size:300%;">LIVE CHAT</p><br/>
+	          <p>
+	             프레젠테이션을 진행하며 실시간 채팅으로 <br>청중의 의견을 확인해보세요.
+	          </p>
+	          <br/>
+	          <p>
+	             IHAQ은 보다 더 원활한 소통을 <br>가능하게 해줍니다.
+	          </p>
+	            <button class="btn btn-default" id="btn1" type="button" style="width: 20%; margin-left: 20%; margin-top: 5%; background-color: darkgrey; font-weight:bold;
+	            font-size:150%;"  onclick="joinShow();"> 가입하기 </button>
+	         </div>
+	       <div class="main_text">
+	          <div class="main_video">
+	               <video loop muted controls="false" data-autoplay>
+	                  <source src="http://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+	             </video>
+	          </div>
+	       </div>
+	    </div>
+	    <div class="section" style="width: 100%;">
+	       <div style="background-color: #072837; height: 70%; position: relative; top:15%;">
+	       <div class="main_text" style="padding-top: 8%;">
+	          <div class="main_video">
+	               <video loop muted controls="false" data-autoplay>
+	                  <source src="http://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+	             </video>
+	          </div>
+	       </div>
+	       <div class="main_text" style="padding-top: 8%;">
+	          <p style="font-size:300%;color:white;">SHARING PDF</p><br/>
+	          <p style="color:white;">
+	             프레젠테이션 자료를 공유하는 기능을 통해 청중의 몰입도를 높여보세요.
+	          </p>
+	          <br/>
+	          <p style="color:white;">
+	             IHAQ은 보다 더 원활한 소통을 <br>가능하게 해줍니다.
+	          </p>
+	            <button class="btn btn-default" id="btn1" type="button" style="width: 20%; margin-left: 20%; margin-top: 5%; background-color: darkgrey; font-weight:bold;
+	            font-size:150%;" onclick="joinShow();"> 가입하기 </button>
+	         </div>
+	    </div>
+	   </div>
+	</div>
+	<script type="text/javascript" src="../../static/main/fullpage.js"></script>
+
+	<script type="text/javascript">
+	    var myFullpage = new fullpage('#fullpage', {
+	        anchors: ['1', '2', '3']
+	    });
+	</script>
+
+
+</body>
+</html>
